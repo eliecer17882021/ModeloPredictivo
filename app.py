@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return'Funcionó'
+    return'El despliegue Funcionó!!!'
 
 
-@app.route('/predecir', methods=['POST'])
+@app.route('/modelopredictivo', methods=['POST'])
 def prediccion():
     json = request.get_json(force=True)
-    xin = json['Datos']
+    xin = json['Cadena']
     xin = np.asarray(xin)
     xin = xin.reshape(1,13)
     # print("Servicio post")
@@ -20,7 +20,7 @@ def prediccion():
     print(yout)
     mensaje = ''
     for y_out in yout:
-        mensaje = mensaje + 'El paciente ' + labels[y_out] + ' tiene una enfermedad cardiaca\n'
+        mensaje = mensaje + 'El usuario@ es' + labels[y_out] + ' para una enfermedad cardiaca\n'
     
     return mensaje
 
@@ -30,7 +30,7 @@ pkl_filename = 'RandomForest.pkl'
 with open(pkl_filename, 'rb') as file:
     model = pickle.load(file)
     
-labels = ['No', 'SI'] # Etiquetas de datos
+labels = ['Negativo', 'Positivo'] # Etiquetas de datos
 
 
 if __name__=='__name__':
