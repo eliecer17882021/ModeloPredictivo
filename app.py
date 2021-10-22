@@ -20,7 +20,7 @@ def prediccion():
     print(yout)
     mensaje = ''
     for y_out in yout:
-        mensaje = mensaje + 'El usuario@ es' + labels[y_out] + ' para una enfermedad cardiaca\n'
+        mensaje = mensaje + 'El usuario@ es ' + labels[y_out] + ' para una enfermedad cardiaca\n'
     
     return mensaje
 
